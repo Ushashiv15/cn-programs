@@ -1,6 +1,5 @@
 #include <stdio.h>
 char v[10];
-int len = 0;
 void sum(char c[], char k[], int l)
 {
     char o[10], r[10];

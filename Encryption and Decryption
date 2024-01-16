@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+void main()
+{
+    int i,ch,ip;
+    char c[100],p[100],k[100];
+    while(1)
+    {
+        printf("1.Encryption\n2.Decryption\n3.Exit\n");
+        printf("enter choice:");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1:
+            printf("\nEncryption");
+            printf("\nenter plain text:");
+            fflush(stdin);
+            scanf("%s",&p);
+            printf("\nenter the encryption key:");
+            scanf("%s",&k);
+            ip=strlen(k);
+            for(i=0;p[i]!='\0';i++)
+                c[i]=p[i]^ip;
+            c[i]='\0';
+            printf("\nencrypted text is:");
+            puts(c);
+            break;
+            case 2:
+            printf("\nDecryption");
+            for(i=0;c[i]!='\0';i++)
+            {
+                p[i]=c[i]^ip;
+            }
+            printf("\ndecrypted text is:");
+            puts(p);
+            break;
+            case 3:
+            exit(0);
+        }
+    }
+}

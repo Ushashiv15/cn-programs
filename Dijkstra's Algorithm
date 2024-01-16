@@ -1,0 +1,55 @@
+#include<stdio.h>
+void main()
+{
+    int c,src,i,j,k,w,v,min;
+    int cm[100][100],d[100],l[200],f[100];
+    printf("enter no. of routers:");
+    scanf("%d",&c);
+    printf("\nenter cost matrix values:");
+    for(i=0;i<c;i++)
+    {
+        for(j=0;j<c;j++)
+        {
+            scanf("%d",&cm[i][j]);
+            if(cm[i][j]<0)
+            cm[i][j]=1000;
+        }
+    }
+    printf("\nenter source router:");
+    scanf("%d",&src);
+    for(v=0;v<c;v++){
+        f[v]=0;
+        l[v]=src;
+        d[v]=cm[src][v];
+    }
+    f[src]=1;
+    for(i=0;i<c;i++){
+        min=1000;
+        for(w=0;w<c;w++){
+            if(f[w]){
+                if(d[w]<min){
+                    v=w;
+                    min=d[w];
+                }
+            }
+        }
+        f[v]=1;
+        for(w=0;w<c;w++){
+            if(f[w]){
+                if(min+cm[v][w]<d[w]){
+                    d[w]=min+cm[v][w];
+                    l[w]=v;
+                }
+            }
+        }
+    }
+    for(i=0;i<c;i++){
+        printf("\n%d==>%d:path taken :%d",src,i,i);
+        w=i;
+        while(w!=src){
+            printf("<==%d",l[w]);
+            w=l[w];
+        }
+        printf("\nshortest path cost:%d",d[i]);
+    }
+}

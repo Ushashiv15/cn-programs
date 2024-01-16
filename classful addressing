@@ -1,0 +1,95 @@
+#include<stdio.h>
+#include<string.h>
+char find(char s[]){
+    char a[4];
+    int i=0;
+    while(s[i]!='.'){
+        a[i]=s[i];
+        i++;
+    }
+    i--;
+    int ip=0,j=1;
+    while(i>=0){
+        ip=ip+(s[i]-'0')*j;
+        j=j*10;
+        i--;
+    }
+    if(ip>=1&&ip<=126)
+    return 'A';
+    else if(ip>=127&&ip<=191)
+    return 'B';
+    else if(ip>=192&&ip<=223)
+    return 'C';
+    else if(ip>=224&&ip<=239)
+    return 'D';
+    else
+    return 'E';
+}
+void sep(char s[],char ipC)
+{
+    char n[12],h[12];
+    for(int k=0;k<12;k++){
+        n[k]='\0';
+        h[k]='\0';
+    }
+    if (ipC=='A')
+    {
+        int i=0,j=0;
+        while(s[j]!='.'){
+            n[i++]=s[j++];
+        }
+        i=0;
+        j++;
+        while(s[j]!='\0'){
+            h[i++]=s[j++];
+        }
+        printf("network id =%s\n",n);
+        printf("host id =%s\n",h);
+    }
+    else if(ipC=='B'){
+        int i=0,j=0,dot=0;
+        while(dot<2){
+            n[i++]=s[j++];
+            if(s[j]=='.'){
+                dot++;
+            }
+        }
+        i=0;
+        j++;
+        while(s[j]!='\0'){
+            h[i++]=s[j++];
+        }
+        printf("network id =%s\n",n);
+        printf("host id =%s\n",h);
+    }
+    else if(ipC=='C')
+    {
+        int i=0,j=0,dot=0;
+        while(dot<3){
+            n[i++]=s[j++];
+            if(s[j]=='.'){
+                dot++;
+            }
+        }
+        i=0;
+        j++;
+        while(s[j]!='\0'){
+            h[i++]=s[j++];
+        }
+        printf("network id =%s\n",n);
+        printf("host id =%s\n",h);
+        
+    }
+    else
+    {
+        printf("in this class,IP address is not divided into n/w and hots id\n");
+    }
+}
+void main(){
+    char s[100];
+    printf("enter the IP address:");
+    scanf("%s",&s);
+    char ipC=find(s);
+    printf("given IP address belongs to class %c \n",ipC);
+    sep(s,ipC);
+}

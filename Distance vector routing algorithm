@@ -1,0 +1,55 @@
+#include<stdio.h>
+#define IN 99
+struct node
+{
+    unsigned d[20];
+    unsigned f[20];
+}rt[10];
+void main(){
+    int cm[20][20];
+    int n,i,j,k,c=0;
+    printf("enter no. of nodes:");
+    scanf("%d",&n);
+    printf("\nenter the cost matrix:");
+    for(i=1;i<=n;i++){
+        for(j=1;j<=n;j++){
+            scanf("%d",&cm[i][j]);
+            if(cm[i][j]==0)
+            cm[i][j]=IN;
+            rt[i].d[j]=cm[i][j];
+            rt[i].f[j]=j;
+        }
+    }
+    for(i=1;i<=n;i++){
+        for(j=1;j<=n;j++)
+        {
+            if(i==j)
+            {
+                rt[i].d[j]=0;
+                rt[i].f[j]=i;
+            }
+            else
+            {
+                for(k=1;k<=n;k++)
+                {
+                    if(rt[i].d[j]>cm[i][k]+rt[k].d[j])
+                    {
+                        rt[i].d[j]=cm[i][k]+rt[k].d[j];
+                        rt[i].f[j]=k;
+                    }
+                    
+                    
+                }
+            }
+        }
+    }
+    for(i=1;i<=n;i++)
+    {
+        printf("\nrouter %d: routing table\n",i);
+        for(j=1;j<=n;j++)
+        {
+            printf("\nnode %d via %d distance %d ",j,rt[i].f[j],rt[i].d[j]);
+        }
+        printf("\n");
+    }
+}

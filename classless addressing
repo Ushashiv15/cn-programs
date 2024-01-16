@@ -29,6 +29,8 @@ char *ip_cl(char *ip_add){
     return mask;
 }
 void main(){
-    char ip_add[16]="192.168.0.0";
+    char ip_add[16];
+    printf("enter the IP address:");
+    scanf("%s",&ip_add);
     printf("Classless address:%s\n",ip_cl(ip_add));
 }

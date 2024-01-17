@@ -2,7 +2,7 @@
 void main()
 {
     int c,src,i,j,k,w,v,min;
-    int cm[100][100],d[100],l[200],f[100];
+    int cm[100][100],d[100],l[100],f[100];
     printf("enter no. of routers:");
     scanf("%d",&c);
     printf("\nenter cost matrix values:");

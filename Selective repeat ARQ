@@ -1,0 +1,23 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+void main(){
+    int f,n;
+    printf("enter no. of bits for seq no:");
+    scanf("%d",&n);
+    f=pow(2,n-1);
+    for(int j=0;j<f;j++)
+    {
+        printf("\nsender: frame %d is sent \n",j);
+    }
+    for(int i=0;i<f;i++){
+        printf("\n");
+        f=rand()%2;
+        if(!f){
+            printf("\nreceiver:frame %d received",i);
+        }
+        else{
+             printf("\nreceiver:frame %d not received",i);
+        }
+    }
+}

@@ -1,0 +1,21 @@
+#include<stdio.h>
+void main(){
+    int win_s,s=0,a,i;
+    printf("enter window size:");
+    scanf("%d",&win_s);
+    while(1){
+        for(i=0;i<win_s;i++){
+            printf("\nFrame %d transmitted \n",s);
+            s++;
+            if(s==win_s){
+                break;
+            }
+        }
+        printf("\nenter last ack:");
+        scanf("%d",&a);
+        if(a==win_s)
+        break;
+        else
+        s=a;
+    }
+}

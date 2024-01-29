@@ -45,7 +45,7 @@ void main(){
     scanf("%s",&g);
     n=strlen(g);
     m=strlen(msg);
-    for(int i=0;i<n;i++){
+    for(int i=0;i<m;i++){
         rev[i]=msg[i];
     }
     for(int i=m;i<m+n-1;i++){
